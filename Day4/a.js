@@ -165,5 +165,3 @@
 //     console.log(key)
 // }
 
-console.log("hello");
-
