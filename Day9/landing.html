@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store API | Products</title>
+
+    <link rel="stylesheet" href="landing.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                StoreAPI
+            </a>
+            <a href="#products" class="btn">View Collection</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Curated Premium Products</h1>
+                <p>Explore our exclusive collection fetched dynamically from the DummyJSON API. Experience speed and
+                    style.</p>
+                <div class="actions">
+                    <button id="fetch-btn" class="btn">Load Products</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products-section">
+            <div class="container">
+                <h2 class="section-title">Featured Items</h2>
+                <div id="product-grid" class="product-grid">
+
+                    <div class="loading">
+                        <p>Click "Load Products" to begin...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 StoreAPI Demo. Built with Vanilla JS.</p>
+        </div>
+    </footer>
+
+    <script src="landing.js"></script>
+</body>
+
+</html>

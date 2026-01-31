@@ -1,0 +1,4 @@
+shallow copy
+deep copy 
+spread and Rest
+memory location
