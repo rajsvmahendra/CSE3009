@@ -1,54 +1,331 @@
-HTTP - Hyper text transfer protocol  - it is communication protocol (client-server to talk)
-HTTP stateless - it means server does not remember any previous request.
-previous request, user data , login state - because of this we use session, cookies and jwt token
+HTTP & NODE.JS – ORGANIZED NOTES
 
-Http request structure - Every http request have four parts - header, url , body,  method 
-=>http methods
-get - Fetch data
-post -send data
-put - update full data
-patch - partial update
-delete - delete data
+HTTP (HyperText Transfer Protocol)
 
-Header - extra information
-e.g. content type - application/JSON
-	authorization - Brear "token"
+HTTP is a communication protocol used for client-server communication.
+A client (browser or frontend) sends a request and a server sends a response using HTTP.
 
-used for authorization- data format and data caching
-body content actual -Data only send by post put patch
+HTTP is stateless:
+The server does NOT remember previous requests.
+It does not remember:
 
-Server Response - Status code , header , body
+user data
 
-Node js follows event driven type architecture, We register a listener 
-http module is built in and it is used to create server
+login state
 
-createServer- a register a listener ,every incoming request
+previous request
 
-Backend never sends data as JSON(javascript object notation) 
-frontend understand JSON easily
+To maintain user state, we use:
 
+Cookies
 
+Sessions
 
+JWT tokens
 
-Setting  Response header
-res.setHeader()
-res.writeHead()
-response.write() sends data as part of the response.
-response.end() signals that the response is complete.
+HTTP Request Structure
 
-http.createServer() - Creates a new HTTP server instance
-The callback function is executed for each request with two parameters:
-req - The request object (http.IncomingMessage)
-res - The response object (http.ServerResponse)
-res.writeHead() - Sets the response status code and headers
-res.end() - Sends the response to client and ends the connection
-server.listen() - Starts the server on the specified port
-JSON.stringify() - convert object to string
-JSON.parse() - convert string to object
+Every HTTP request has four main parts:
 
-Content-Type: Specifies the media type of the content (e.g., text/html, application/json)
-Content-Length: The length of the response body in bytes
-Location: Used in redirects (with 3xx status codes)
-Set-Cookie: Sets HTTP cookies on the client
-Cache-Control: Directives for caching mechanisms
-Access-Control-Allow-Origin: For CORS support
+URL
+→ The address where the request is sent
+
+Method
+→ The action to perform
+
+HTTP Methods:
+
+GET → Fetch data
+
+POST → Send data
+
+PUT → Update full data
+
+PATCH → Update partial data
+
+DELETE → Delete data
+
+Headers
+→ Extra information about request
+
+Examples:
+
+Content-Type: application/json
+
+Authorization: Bearer token
+
+Headers are used for:
+
+Authorization
+
+Data format
+
+Caching
+
+Security
+
+Body
+→ Actual data sent by client
+
+Body is used only in:
+
+POST
+
+PUT
+
+PATCH
+
+Example body:
+{
+"name": "Rajsv",
+"age": 20
+}
+
+HTTP Response Structure
+
+Server sends back:
+
+Status Code (200, 404, 500, etc.)
+
+Headers
+
+Body (data)
+
+Node.js and HTTP
+
+Node.js follows an event-driven architecture.
+It listens for incoming requests and handles them using callbacks.
+
+The http module is built-in in Node.js and is used to create an HTTP server.
+
+Creating Server in Node.js
+
+http.createServer() creates a new HTTP server.
+
+Syntax:
+http.createServer((req, res) => { })
+
+The callback runs for every incoming request.
+
+req → Request object (data from client)
+res → Response object (data sent to client)
+
+server.listen(port)
+→ Starts the server on the given port
+
+Request Object (req)
+
+The request object contains all data sent by the client.
+
+Main properties:
+
+req.url
+→ Requested path (e.g., /login, /users)
+
+req.method
+→ HTTP method (GET, POST, PUT, DELETE)
+
+req.headers
+→ Extra info sent by client
+(e.g., Content-Type, Authorization)
+
+req.body
+→ Actual data sent by client (POST, PUT, PATCH)
+
+Purpose of req:
+
+Read client data
+
+Understand what client wants
+
+Response Object (res)
+
+The response object is used to send data back to the client.
+
+Main methods:
+
+res.setHeader(name, value)
+→ Sets a single response header
+
+res.writeHead(statusCode, headers)
+→ Sets status code and headers
+
+res.write(data)
+→ Sends part of response data
+
+res.end(data)
+→ Sends final data and ends the response
+
+Purpose of res:
+
+Send status code
+
+Send headers
+
+Send response body
+
+Sending Response Example
+
+res.setHeader("Content-Type", "application/json");
+res.write("Hello");
+res.end("Done");
+
+OR
+
+res.writeHead(200, {"Content-Type": "application/json"});
+res.end("Hello World");
+
+JSON (JavaScript Object Notation)
+
+JSON is used to exchange data between frontend and backend.
+
+Why JSON is used:
+
+Human-readable
+
+Machine-parsable
+
+Lightweight
+
+Language-independent
+
+Easily understood by JavaScript
+
+JSON Conversion
+
+JSON.stringify(object)
+→ Converts object to string
+
+JSON.parse(string)
+→ Converts string to object
+
+Important HTTP Headers
+
+Content-Type
+→ Specifies data type (text/html, application/json)
+
+Content-Length
+→ Size of response body in bytes
+
+Location
+→ Used for redirects (3xx status codes)
+
+Set-Cookie
+→ Sets cookies in browser
+
+Cache-Control
+→ Controls caching
+
+Access-Control-Allow-Origin
+→ Used for CORS support
+
+Important Points
+
+HTTP is a protocol
+
+HTTP is stateless
+
+Requests contain: URL, Method, Headers, Body
+
+Responses contain: Status code, Headers, Body
+
+Node.js uses built-in http module
+
+Data is exchanged using JSON
+
+JSON is human-readable and machine-parsable
+
+One-Line Interview Summary
+
+HTTP is a stateless client-server protocol where requests contain URL, 
+method, headers and body, and responses contain status code, headers and body. 
+Node.js uses the built-in http module to create an event-driven server, 
+and data is exchanged in JSON format.
+
+REQUEST & RESPONSE OBJECT (Node.js HTTP)
+
+When a client sends a request to the server, Node.js provides two objects:
+
+req → request object (data coming FROM client)
+res → response object (data going TO client)
+
+Flow:
+Client → req → Server → res → Client
+
+REQUEST OBJECT (req)
+
+The req object contains all information sent by the client.
+
+Main properties of req:
+
+req.url
+→ URL path requested by client
+Example: /login, /users
+
+req.method
+→ HTTP method used
+Example: GET, POST, PUT, DELETE
+
+req.headers
+→ Extra information sent by client
+Example:
+Content-Type, Authorization token
+
+req.body
+→ Actual data sent by client (used in POST, PUT, PATCH)
+Example:
+username, password, form data
+
+Purpose of req:
+→ To read client data
+→ To know what the client wants
+
+RESPONSE OBJECT (res)
+
+The res object is used to send data back to the client.
+
+Main methods of res:
+
+res.setHeader(name, value)
+→ Sets a single response header
+
+res.writeHead(statusCode, headers)
+→ Sets status code and headers together
+
+res.write(data)
+→ Sends part of response data
+
+res.end(data)
+→ Sends final data and ends the response
+
+Purpose of res:
+→ To send reply to client
+→ To send status, headers and body
+
+SIMPLE CODE FLOW
+
+http.createServer((req, res) => {
+
+// req → data from client
+console.log(req.method);
+console.log(req.url);
+
+// res → send data to client
+res.writeHead(200, {"Content-Type": "text/plain"});
+res.end("Hello Client");
+
+});
+
+MEMORY TRICK
+
+req = RECEIVE from client
+res = SEND to client
+
+req → what client sends
+res → what server sends
+
+INTERVIEW ONE-LINER
+
+“The request object contains data sent by the client, 
+and the response object is used by the server 
+to send data back to the client.”
