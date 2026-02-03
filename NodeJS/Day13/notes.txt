@@ -1,0 +1,10 @@
+Event driven is an architecture, 
+event is a design pattern where the flow of the application is determined by the events such as user action.
+
+Event emitter is a class that emits events.
+
+.on(Event,Listener)=>it registers an event 
+emit.emit(Event, Data)=>it triggers an event
+AiSENSY
+
+orderplaced,confirmed,dpassigned,ontheway,delivered

@@ -1,0 +1,54 @@
+HTTP - Hyper text transfer protocol  - it is communication protocol (client-server to talk)
+HTTP stateless - it means server does not remember any previous request.
+previous request, user data , login state - because of this we use session, cookies and jwt token
+
+Http request structure - Every http request have four parts - header, url , body,  method 
+=>http methods
+get - Fetch data
+post -send data
+put - update full data
+patch - partial update
+delete - delete data
+
+Header - extra information
+e.g. content type - application/JSON
+	authorization - Brear "token"
+
+used for authorization- data format and data caching
+body content actual -Data only send by post put patch
+
+Server Response - Status code , header , body
+
+Node js follows event driven type architecture, We register a listener 
+http module is built in and it is used to create server
+
+createServer- a register a listener ,every incoming request
+
+Backend never sends data as JSON(javascript object notation) 
+frontend understand JSON easily
+
+
+
+
+Setting  Response header
+res.setHeader()
+res.writeHead()
+response.write() sends data as part of the response.
+response.end() signals that the response is complete.
+
+http.createServer() - Creates a new HTTP server instance
+The callback function is executed for each request with two parameters:
+req - The request object (http.IncomingMessage)
+res - The response object (http.ServerResponse)
+res.writeHead() - Sets the response status code and headers
+res.end() - Sends the response to client and ends the connection
+server.listen() - Starts the server on the specified port
+JSON.stringify() - convert object to string
+JSON.parse() - convert string to object
+
+Content-Type: Specifies the media type of the content (e.g., text/html, application/json)
+Content-Length: The length of the response body in bytes
+Location: Used in redirects (with 3xx status codes)
+Set-Cookie: Sets HTTP cookies on the client
+Cache-Control: Directives for caching mechanisms
+Access-Control-Allow-Origin: For CORS support

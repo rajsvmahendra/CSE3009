@@ -68,3 +68,11 @@ prevBtn.addEventListener("click", () => {
         showData();
     }
 });
+
+
+// localStorage.setItem("name", "Raj");
+// localStorage.setItem("age", "20");
+// localStorage.setItem("city", "Delhi");
+
+// localStorage.removeItem("age");
+

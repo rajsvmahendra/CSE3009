@@ -1,0 +1,14 @@
+JS originally for browser
+NodeJS allows the JS to run outside
+NodeJS is fast because it is non blocking (async-await) , blocking - synchronous
+synchronous - 1st come 1st work
+asynchronous - it work
+NodeJS allow JS to built backend server
+
+REPL- read, evaluate and print, loop= it prints the result of last evaluated expression, 
+(variable declatration) does not produce an result so repl print undefined
+
+MODULE: file that contains JS code, we can reuse the code by importing it
+it helps to organise code files, reuse logi avoid confusion
+module.exports = what I give
+require() = what I take
